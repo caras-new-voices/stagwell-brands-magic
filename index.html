@@ -331,12 +331,26 @@
     finale.scrollIntoView({behavior:"smooth",block:"start"});
     clearTimeout(glideT); glideT=setTimeout(function(){ gliding=false; },850);
   }
+  function realignTen(){        // gently re-settle the panel in place (no DOM move, no jump)
+    gliding=true;
+    finale.scrollIntoView({behavior:"smooth",block:"start"});
+    clearTimeout(glideT); glideT=setTimeout(function(){ gliding=false; },700);
+  }
   function armStop(){
     clearTimeout(stopT);
     stopT=setTimeout(function(){
       if(gliding) return;
       if(window.scrollY < window.innerHeight*0.6) return; // still at the very top
-      settleOnTen();
+      var H=window.innerHeight;
+      if(finale.parentNode){
+        var r=finale.getBoundingClientRect();
+        if(r.bottom>2 && r.top<H-2){            // the ten are already (partly) on screen
+          var vis=Math.min(r.bottom,H)-Math.max(r.top,0);
+          if(vis < H-3) realignTen();           // nudge them to fill the screen; skip if already full
+          return;                                // never detach/reposition while they're visible
+        }
+      }
+      settleOnTen();                             // only when the ten are absent / fully off-screen
     },430);
   }
   window.addEventListener("scroll",function(){
