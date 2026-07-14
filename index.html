@@ -85,26 +85,10 @@
   .tile{flex:none;width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.15)}
   .tile svg{width:100%;height:100%;display:block}
 
-  /* Flagship panel — sized to exactly one screen; the ten cards flex to fit */
-  .finale{
-    height:100dvh;margin:0 -12px;display:flex;flex-direction:column;
-    padding:12px 18px calc(10px + var(--safe-b));overflow:hidden;
-    background:
-      radial-gradient(120% 70% at 50% 0%,rgba(255,184,28,.14),transparent 60%),
-      radial-gradient(120% 70% at 50% 100%,rgba(0,90,120,.35),transparent 60%);
-    border-top:1px solid var(--line);
-  }
-  .finale .cap{text-align:center;flex:none;margin-bottom:8px}
-  .finale .cap .kicker{font-size:10.5px}
-  .finale h2{margin:5px 0 2px;font-size:21px;letter-spacing:-.03em;font-weight:800}
-  .finale .cap p{margin:0;color:var(--muted);font-size:12px}
-  .flags{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:6px}
-  .flag{flex:1 1 0;min-height:0;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:13px;background:linear-gradient(150deg,var(--card2),var(--card));border:1px solid var(--line)}
-  .flag .tile{width:40px;height:40px;border-radius:11px;flex:none}
-  .flag .name{font-size:14.5px;font-weight:700;white-space:normal;line-height:1.1}
-  .flag .cat{font-size:11px;margin-top:1px}
-  .flag .num{margin-left:auto;font-size:11.5px;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums}
-  .finalefoot{flex:none;margin-top:8px;text-align:center;color:var(--muted);font-size:10.5px}
+  /* Where the list settles: exactly one screen of ordinary-looking feed rows */
+  .finale{height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+  .finale .flags{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+  .finale .row{flex:1 1 0;min-height:0}
 </style>
 </head>
 <body>
@@ -137,15 +121,7 @@
   <div class="sectionlabel">All partners</div>
   <div class="feed" id="feed"></div>
 
-  <section class="finale" id="finale">
-    <div class="cap">
-      <div class="kicker" style="color:var(--gold)">Featured this week</div>
-      <h2>Flagship Partners</h2>
-      <p>Ten brands at the heart of everything we do.</p>
-    </div>
-    <div class="flags" id="flags"></div>
-    <div class="finalefoot">Stagwell — The Brand Directory</div>
-  </section>
+  <section class="finale" id="finale"><div class="flags" id="flags"></div></section>
 </div>
 
 <script>
@@ -285,24 +261,23 @@
   appendBatch(45);
 
   // ---- the ten (built, then parked off-DOM until the user stops) ----
+  // the ten are rendered as ordinary feed rows (no header, no numbers) so a stop
+  // looks like any random stop in the endless list
   var flags=document.getElementById("flags"), fh="";
   for(var j=0;j<FLAGSHIP.length;j++){
     var fn=FLAGSHIP[j];
-    fh+='<div class="flag"><div class="tile">'+LOGOS[fn]+'</div>'
+    fh+='<div class="row"><div class="tile">'+LOGOS[fn]+'</div>'
       +'<div class="meta"><div class="name">'+fn+'</div><div class="cat">'+(FLAGCAT[fn]||catFor(fn))+'</div></div>'
-      +'<div class="num">'+String(j+1).padStart(2,"0")+'</div></div>';
+      +'<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></div>';
   }
   flags.innerHTML=fh;
   var finale=document.getElementById("finale");
   if(finale.parentNode) finale.parentNode.removeChild(finale);
 
-  // ---- clean screen: hide header/search while the ten are shown ----
-  var hdr=document.querySelector("header"), sw=document.querySelector(".searchwrap");
-  if("IntersectionObserver" in window){
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){ hdr.classList.toggle("gone",e.isIntersecting); sw.classList.toggle("gone",e.isIntersecting); });
-    },{threshold:0.5}).observe(finale);
-  }
+  // ---- header/search hide on downward scroll (standard feed behavior) so the
+  //      settle screen matches any other downward-scroll stop ----
+  var hdr=document.querySelector("header"), sw=document.querySelector(".searchwrap"), lastY=window.scrollY;
+  function setChrome(hide){ hdr.classList.toggle("gone",hide); sw.classList.toggle("gone",hide); }
 
   // ---- the force: wherever the user stops, the list settles on the ten ----
   var gliding=false, stopT=null, glideT=null;
@@ -355,7 +330,11 @@
   }
   window.addEventListener("scroll",function(){
     if(gliding) return;
-    if(window.scrollY+window.innerHeight > document.documentElement.scrollHeight-1600) appendBatch(30);
+    var y=window.scrollY;
+    if(y>lastY+4 && y>120) setChrome(true);      // scrolling down → hide chrome
+    else if(y<lastY-4) setChrome(false);          // scrolling up → show chrome
+    lastY=y;
+    if(y+window.innerHeight > document.documentElement.scrollHeight-1600) appendBatch(30);
     armStop();
   },{passive:true});
   // any real user input cancels an in-progress settle so scrolling always responds
