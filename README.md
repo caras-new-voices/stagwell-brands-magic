@@ -15,11 +15,12 @@ network agencies), and the AI "reads their mind."
   finds a valid **progressive anagram** over a pool of confirmed Stagwell brands
   and verifies the result.
 - **`index.html`** — a mobile-first "force" prop: a Stagwell-branded brand
-  directory (Prussian-blue + gold palette) that lists 4,000 partners, but every
-  scroll ends on the same ten "Flagship Partners" (the trick brands), each shown
-  with its logo. Hand the participant the phone, let them scroll the
-  endless-feeling list, and when they reach the end they can only choose from the
-  ten. Fully self-contained (works offline — no venue wifi needed).
+  directory (Prussian-blue + gold palette) presented as an **endless** discovery
+  feed of 4,000 partners in random order. The participant scrolls for as long as
+  they like; the instant they **stop**, the list smoothly settles onto the same
+  ten "Flagship Partners" (the trick brands), each shown with its logo — so any
+  stop lands on the ten. The ten stay hidden while scrolling (no tell). Fully
+  self-contained (works offline — no venue wifi needed).
 - **`vercel.json`** — static-hosting config so the repo deploys to Vercel as-is.
 
   > Built as an internal performance aid for a Stagwell event. Flagship logos are

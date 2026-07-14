@@ -30,7 +30,6 @@
     --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html{scroll-snap-type:y proximity}
   body{
     margin:0;background:linear-gradient(180deg,#022630,#003349 60%,#022a36);
     background-attachment:fixed;color:var(--ink);
@@ -86,9 +85,9 @@
   .tile{flex:none;width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.15)}
   .tile svg{width:100%;height:100%;display:block}
 
-  /* Flagship finale — the scroll ALWAYS ends here, showing all ten */
+  /* Flagship panel — the list settles here whenever the user stops scrolling */
   .finale{
-    scroll-snap-align:end;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
+    min-height:100dvh;margin:0 -12px;display:flex;flex-direction:column;justify-content:center;
     padding:22px 18px calc(20px + var(--safe-b));
     background:
       radial-gradient(120% 70% at 50% 0%,rgba(255,184,28,.14),transparent 60%),
@@ -134,18 +133,17 @@
     </div>
   </div>
 
-  <div class="sectionlabel">All partners · A–Z</div>
+  <div class="sectionlabel">All partners</div>
   <div class="feed" id="feed"></div>
-  <div class="noresult" id="noresult">No brands match that search.</div>
 
   <section class="finale" id="finale">
     <div class="cap">
-      <div class="kicker" style="color:var(--gold)">The shortlist</div>
+      <div class="kicker" style="color:var(--gold)">Featured this week</div>
       <h2>Flagship Partners</h2>
       <p>Ten brands at the heart of everything we do.</p>
     </div>
     <div class="flags" id="flags"></div>
-    <div class="finalefoot">Stagwell — The Brand Directory · You've reached the end of all 4,000 partners</div>
+    <div class="finalefoot">Stagwell — The Brand Directory</div>
   </section>
 </div>
 
@@ -233,62 +231,105 @@
   function catFor(name){ var h=0; for(var i=0;i<name.length;i++) h=(h*31+name.charCodeAt(i))>>>0; return CATS[h%CATS.length]; }
   function colorFor(name){ var h=0; for(var i=0;i<name.length;i++) h=(h*17+name.charCodeAt(i))>>>0; return COLORS[h%COLORS.length]; }
 
-  var seen={}, list=[];
+  // ---- build a shuffled filler pool (a discovery feed, NOT alphabetical) ----
+  var seen={}, pool=[];
   FLAGSHIP.forEach(function(f){ seen[f.toLowerCase()]=1; });
-  REAL.forEach(function(b){ var k=b.toLowerCase(); if(!seen[k]){ seen[k]=1; list.push(b); } });
+  REAL.forEach(function(b){ var k=b.toLowerCase(); if(!seen[k]){ seen[k]=1; pool.push(b); } });
   var guard=0;
-  while(list.length<3990 && guard<80000){
+  while(pool.length<3990 && guard<80000){
     guard++;
-    var name = rnd()<0.5 ? (pick(PRE)+" "+pick(SUF)) : (pick(PRE)+pick(["","","","x","io","ly","co"])+" "+pick(SUF));
-    var k=name.toLowerCase();
-    if(!seen[k]){ seen[k]=1; list.push(name); }
+    var nm = rnd()<0.5 ? (pick(PRE)+" "+pick(SUF)) : (pick(PRE)+pick(["","","","x","io","ly","co"])+" "+pick(SUF));
+    var k=nm.toLowerCase(); if(!seen[k]){ seen[k]=1; pool.push(nm); }
   }
-  list.sort(function(a,b){ return a.replace(/^The /,"").localeCompare(b.replace(/^The /,"")); });
+  for(var s=pool.length-1;s>0;s--){ var rr=Math.floor(rnd()*(s+1)),tp=pool[s]; pool[s]=pool[rr]; pool[rr]=tp; }
 
-  document.getElementById("count").textContent = (list.length+FLAGSHIP.length).toLocaleString();
+  document.getElementById("count").textContent = "4,000";
 
-  var feed=document.getElementById("feed"), html="";
-  for(var i=0;i<list.length;i++){
-    var n=list[i];
-    html+='<div class="row" data-n="'+n.toLowerCase()+'">'
+  // ---- endless feed ----
+  var feed=document.getElementById("feed"), pidx=0;
+  function rowHTML(n){
+    return '<div class="row" data-n="'+n.toLowerCase()+'">'
       +'<div class="mono" style="background:'+colorFor(n)+'">'+initial(n)+'</div>'
       +'<div class="meta"><div class="name">'+n+'</div><div class="cat">'+catFor(n)+'</div></div>'
       +'<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>'
       +'</div>';
   }
-  feed.innerHTML=html;
+  function appendBatch(count){
+    var h=""; for(var i=0;i<count;i++){ h+=rowHTML(pool[pidx++ % pool.length]); }
+    feed.insertAdjacentHTML("beforeend", h);
+  }
+  appendBatch(45);
 
+  // ---- the ten (built, then parked off-DOM until the user stops) ----
   var flags=document.getElementById("flags"), fh="";
   for(var j=0;j<FLAGSHIP.length;j++){
     var fn=FLAGSHIP[j];
-    fh+='<div class="flag">'
-      +'<div class="tile">'+LOGOS[fn]+'</div>'
+    fh+='<div class="flag"><div class="tile">'+LOGOS[fn]+'</div>'
       +'<div class="meta"><div class="name">'+fn+'</div><div class="cat">'+(FLAGCAT[fn]||catFor(fn))+'</div></div>'
-      +'<div class="num">'+String(j+1).padStart(2,"0")+'</div>'
-      +'</div>';
+      +'<div class="num">'+String(j+1).padStart(2,"0")+'</div></div>';
   }
   flags.innerHTML=fh;
+  var finale=document.getElementById("finale");
+  if(finale.parentNode) finale.parentNode.removeChild(finale);
 
-  var q=document.getElementById("q"), rows=feed.getElementsByClassName("row"), noresult=document.getElementById("noresult"), t;
-  q.addEventListener("input",function(){
-    clearTimeout(t);
-    t=setTimeout(function(){
-      var v=q.value.trim().toLowerCase(), shown=0;
-      for(var i=0;i<rows.length;i++){
-        var match = !v || rows[i].getAttribute("data-n").indexOf(v)>-1;
-        rows[i].classList.toggle("hidden",!match);
-        if(match) shown++;
-      }
-      noresult.style.display = (v && shown===0) ? "block" : "none";
-    },90);
-  });
-
+  // ---- clean screen: hide header/search while the ten are shown ----
   var hdr=document.querySelector("header"), sw=document.querySelector(".searchwrap");
   if("IntersectionObserver" in window){
     new IntersectionObserver(function(es){
       es.forEach(function(e){ hdr.classList.toggle("gone",e.isIntersecting); sw.classList.toggle("gone",e.isIntersecting); });
-    },{threshold:0.4}).observe(document.getElementById("finale"));
+    },{threshold:0.5}).observe(finale);
   }
+
+  // ---- the force: wherever the user stops, the list settles on the ten ----
+  var gliding=false, stopT=null, glideT=null;
+  function firstRowBelowFold(){
+    var vpB=window.scrollY+window.innerHeight, kids=feed.children;
+    for(var i=0;i<kids.length;i++){ if(kids[i]!==finale && kids[i].offsetTop>=vpB) return kids[i]; }
+    return null;
+  }
+  function settleOnTen(){
+    gliding=true;
+    // detach from a prior spot (compensate scroll if it was above the viewport)
+    if(finale.parentNode){
+      var r=finale.getBoundingClientRect(), h=finale.offsetHeight, wasAbove=r.bottom<=0;
+      finale.parentNode.removeChild(finale);
+      if(wasAbove) window.scrollBy(0,-h);
+    }
+    // guarantee filler exists below the fold, then drop the panel just past it
+    var safety=0;
+    while(safety++<30){
+      var last=feed.lastElementChild;
+      if(!last || last.offsetTop >= window.scrollY+window.innerHeight*2) break;
+      appendBatch(25);
+    }
+    var anchor=firstRowBelowFold();
+    if(anchor) feed.insertBefore(finale,anchor); else feed.appendChild(finale);
+    finale.scrollIntoView({behavior:"smooth",block:"start"});
+    clearTimeout(glideT); glideT=setTimeout(function(){ gliding=false; },850);
+  }
+  function armStop(){
+    clearTimeout(stopT);
+    stopT=setTimeout(function(){
+      if(gliding) return;
+      if(window.scrollY < window.innerHeight*0.6) return; // still at the very top
+      settleOnTen();
+    },430);
+  }
+  window.addEventListener("scroll",function(){
+    if(gliding) return;
+    if(window.scrollY+window.innerHeight > document.documentElement.scrollHeight-1600) appendBatch(30);
+    armStop();
+  },{passive:true});
+
+  // ---- search filters the loaded rows (the ten are unaffected) ----
+  var q=document.getElementById("q"), t;
+  q.addEventListener("input",function(){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      var v=q.value.trim().toLowerCase(), rows=feed.getElementsByClassName("row");
+      for(var i=0;i<rows.length;i++){ rows[i].classList.toggle("hidden", !!v && rows[i].getAttribute("data-n").indexOf(v)===-1); }
+    },90);
+  });
 })();
 </script>
 </body>
