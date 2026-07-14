@@ -337,10 +337,19 @@ The structure should be:
 
 ---
 
+> Each out below reinterprets the **exact shape** the AI just described while
+> "reading" that letter — turning it into a feature of the brand's logo or
+> product. The AI never concedes it saw a letter; it realizes it was looking at
+> the brand all along. Tell it as a small story: *"Ah — that's why. What I was
+> looking at was actually…"*
+
 ### No on A — PepsiCo
 
-> "No A. That makes sense. I wasn't seeing the crossbar of an A at all — that was
-> a wave curving through a circle. Red, white, and blue, folding around itself."
+> "No A. Of course — and now I understand why I saw one. I told you there were
+> two strokes leaning into a peak with a bar across the middle. That bar was a
+> wave. A single ribbon rolling left to right through a circle, cresting in the
+> center — that crest is the peak I mistook for the top of an A. Red above it,
+> blue below it, a sliver of white between."
 
 Pause.
 
@@ -349,15 +358,18 @@ Pause.
 
 Pause.
 
-> "[PARTICIPANT NAME], you're thinking of **PepsiCo**. Is that what you're
-> thinking of?"
+> "It's a globe, split by that wave. [PARTICIPANT NAME], you're thinking of
+> **PepsiCo**. Is that what you're thinking of?"
 
 ---
 
 ### No on E — Starbucks
 
-> "No E. I think those stacked bars weren't letters — they were rings. A circular
-> badge, green, with a crown of little points around the rim."
+> "No E. That solves it. Those three stacked rungs I kept seeing — that wasn't a
+> letter at all, that was a badge viewed edge-on. An outer ring, an inner ring,
+> and the band of text running between them. Three concentric circles, flattened
+> by the glare into little horizontal bars. And around the top rim, a row of
+> points — a crown."
 
 Pause.
 
@@ -365,15 +377,17 @@ Pause.
 
 Pause.
 
-> "You're picturing a green circle with a figure in the center. You're thinking
-> of **Starbucks**. Is that correct?"
+> "Green. A figure at the center, twin tails. You're thinking of **Starbucks**.
+> Is that correct?"
 
 ---
 
 ### No on L — Target
 
-> "No L. That upright with a foot — that wasn't a letter. That was the edge of a
-> ring catching the light. A circle inside a circle. A bullseye."
+> "No L. Now the shape makes sense. I described one tall upright with a little
+> foot at the base — but that was a ring standing on its edge, straightened out
+> by the light, and the 'foot' was the base of a dot sitting dead center inside
+> it. It's not a letter with a stem. It's a circle inside a circle."
 
 Pause.
 
@@ -381,16 +395,18 @@ Pause.
 
 Pause.
 
-> "It's a single bold mark, dead center. You're thinking of **Target**. Is that
-> what you chose?"
+> "One bold mark, aimed right at the middle. A bullseye. You're thinking of
+> **Target**. Is that what you chose?"
 
 ---
 
 ### No on N — Apple
 
-> "No N. That explains the diagonal. It wasn't a connecting stroke between two
-> letters — it was a stem, with a single leaf angling off the top of something
-> round."
+> "No N. That explains the diagonal. I said there were two uprights with a stroke
+> running corner to corner between them — but that diagonal was never a letter. It
+> was a stem, tilting off the top, with a single leaf on it. And the 'uprights'
+> were the two sides of something round pulled straight by the flicker — a
+> silhouette with a bite taken out of one side."
 
 Pause.
 
@@ -398,15 +414,17 @@ Pause.
 
 Pause.
 
-> "It's a simple silhouette with a bite taken out of the side. You're thinking of
-> **Apple**. Is that right?"
+> "Simple. Clean. One bite missing. You're thinking of **Apple**. Is that right?"
 
 ---
 
 ### No on I — The Coca-Cola Company
 
-> "No I. That single upright stroke — that wasn't a letter. That was a bottle. A
-> curved contour bottle standing straight up, with a ribbon waving behind it."
+> "No I. And that's the giveaway. I kept seeing one narrow stroke standing on its
+> own — but that wasn't a letter buzzing in isolation. That was glass. A contour
+> bottle, tall and upright, waist pinched in at the middle. From across a dark
+> street a bottle reads as a single bright vertical line, and behind it a ribbon
+> waving through the script."
 
 Pause.
 
@@ -414,15 +432,17 @@ Pause.
 
 Pause.
 
-> "There's a red so specific it's basically a trademark. You're thinking of
-> **The Coca-Cola Company**. Is that correct?"
+> "A red that's basically trademarked, and that flowing script. You're thinking
+> of **The Coca-Cola Company**. Is that correct?"
 
 ---
 
 ### No on S — National Football League
 
-> "No S. Interesting. That double curve wasn't a letter — those were the laces,
-> stitched across something pointed at both ends. And behind it, a shield."
+> "No S. Interesting — because an S is exactly what laces look like. I saw a tube
+> curving one way and doubling back the other; those were stitches, running down
+> the middle of something pointed at both ends. A ball. And the long curve
+> wrapping around it was the edge of a crest — a shield, stars along the top."
 
 Pause.
 
@@ -438,9 +458,11 @@ Pause.
 
 ### No on R — Stellantis
 
-> "No R. That helps. The loop with a leg kicking out — that wasn't a letter. That
-> was a profile. A hood, a wheel — a car's silhouette, and a little constellation
-> of stars above the name."
+> "No R. That helps enormously. The rounded loop with a leg kicking out from
+> underneath — I read it as an R, but it was a profile. The loop was a wheel and
+> the leg was a fender sweeping back off it. A car, seen side-on. And those extra
+> flecks of light I dismissed as glare, scattered above the name — those were
+> deliberate. A little constellation of stars."
 
 Pause.
 
@@ -448,15 +470,18 @@ Pause.
 
 Pause.
 
-> "This is the group behind a whole garage of car brands. You're thinking of
-> **Stellantis**. Is that what you selected?"
+> "This is the group standing behind a whole garage of car brands. You're
+> thinking of **Stellantis**. Is that what you selected?"
 
 ---
 
 ### No on D — General Mills
 
-> "No D. That makes sense. A straight spine with a full, rounded belly — that
-> wasn't a letter. That was a single big rounded shape sitting inside a circle."
+> "No D. That actually makes it clearer. I described a straight spine with a big
+> belly curving off the side — and I was right that it was a single large rounded
+> letter, I just picked the wrong one. That belly curls all the way in on itself.
+> It's not a D. It's a G. One bold, oversized G sitting inside a rounded box,
+> used as shorthand for an entire company."
 
 Pause.
 
@@ -464,15 +489,16 @@ Pause.
 
 Pause.
 
-> "One giant rounded letter, standing for the whole company. You're thinking of
-> **General Mills**. Is that correct?"
+> "The 'Big G.' You're thinking of **General Mills**. Is that correct?"
 
 ---
 
 ### No on U — Delta Air Lines
 
-> "No U. That open valley — that wasn't the bottom of a letter. That was a wing.
-> A sharp triangle sweeping down, two shades folded together into a point."
+> "No U. And that's because I had it upside down. I saw an open valley dipping
+> down and coming back up — but flip it over and that valley becomes a peak. A
+> triangle. Two shades of red and blue folded together into a single arrowhead,
+> pointed up like a swept wing catching the light."
 
 Pause.
 
@@ -480,8 +506,8 @@ Pause.
 
 Pause.
 
-> "A red and blue triangle — a widget, up in the sky. You're thinking of **Delta
-> Air Lines**. Is that what you chose?"
+> "A widget, up in the sky. You're thinking of **Delta Air Lines**. Is that what
+> you chose?"
 
 ---
 
@@ -489,8 +515,10 @@ Pause.
 
 After the participant confirms U:
 
-> "Every impression is still lighting up. Every single letter. That only happens
-> when the whole sign stays lit — nothing burnt out at all."
+> "Every impression is still lighting up. Every single letter, not one bulb dark.
+> That never happens — and it's telling me I was making the same mistake the whole
+> time. Those weren't letters at all. Every stroke I thought I was reading was a
+> curved line of the same shape, over and over, arcing around a center."
 
 Pause.
 
@@ -498,8 +526,8 @@ Pause.
 
 Pause.
 
-> "The letters resolve into a globe — blue lines curving into a sphere, up in the
-> sky. You're thinking of **United Airlines**. Is that what you chose?"
+> "They're lines of longitude. A blue globe, drawn in curving strokes, floating up
+> in the sky. You're thinking of **United Airlines**. Is that what you chose?"
 
 ---
 
