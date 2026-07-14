@@ -85,25 +85,26 @@
   .tile{flex:none;width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.15)}
   .tile svg{width:100%;height:100%;display:block}
 
-  /* Flagship panel — the list settles here whenever the user stops scrolling */
+  /* Flagship panel — sized to exactly one screen; the ten cards flex to fit */
   .finale{
-    min-height:100dvh;margin:0 -12px;display:flex;flex-direction:column;justify-content:center;
-    padding:22px 18px calc(20px + var(--safe-b));
+    height:100dvh;margin:0 -12px;display:flex;flex-direction:column;
+    padding:12px 18px calc(10px + var(--safe-b));overflow:hidden;
     background:
       radial-gradient(120% 70% at 50% 0%,rgba(255,184,28,.14),transparent 60%),
       radial-gradient(120% 70% at 50% 100%,rgba(0,90,120,.35),transparent 60%);
     border-top:1px solid var(--line);
   }
-  .finale .cap{text-align:center;margin-bottom:14px}
-  .finale h2{margin:8px 0 4px;font-size:24px;letter-spacing:-.03em;font-weight:800}
-  .finale .cap p{margin:0;color:var(--muted);font-size:13px}
-  .flags{display:flex;flex-direction:column;gap:7px}
-  .flag{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:14px;background:linear-gradient(150deg,var(--card2),var(--card));border:1px solid var(--line)}
-  .flag .tile{width:46px;height:46px;border-radius:12px}
-  .flag .name{font-size:15px;font-weight:700;white-space:normal;line-height:1.15}
-  .flag .cat{font-size:11.5px;margin-top:1px}
-  .flag .num{margin-left:auto;font-size:12px;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums}
-  .finalefoot{margin-top:16px;text-align:center;color:var(--muted);font-size:11px;line-height:1.6}
+  .finale .cap{text-align:center;flex:none;margin-bottom:8px}
+  .finale .cap .kicker{font-size:10.5px}
+  .finale h2{margin:5px 0 2px;font-size:21px;letter-spacing:-.03em;font-weight:800}
+  .finale .cap p{margin:0;color:var(--muted);font-size:12px}
+  .flags{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:6px}
+  .flag{flex:1 1 0;min-height:0;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:13px;background:linear-gradient(150deg,var(--card2),var(--card));border:1px solid var(--line)}
+  .flag .tile{width:40px;height:40px;border-radius:11px;flex:none}
+  .flag .name{font-size:14.5px;font-weight:700;white-space:normal;line-height:1.1}
+  .flag .cat{font-size:11px;margin-top:1px}
+  .flag .num{margin-left:auto;font-size:11.5px;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums}
+  .finalefoot{flex:none;margin-top:8px;text-align:center;color:var(--muted);font-size:10.5px}
 </style>
 </head>
 <body>
@@ -234,7 +235,6 @@
   // ---- build a shuffled filler pool (a discovery feed, NOT alphabetical) ----
   var seen={}, pool=[];
   FLAGSHIP.forEach(function(f){ seen[f.toLowerCase()]=1; });
-  REAL.forEach(function(b){ var k=b.toLowerCase(); if(!seen[k]){ seen[k]=1; pool.push(b); } });
   var guard=0;
   while(pool.length<3990 && guard<80000){
     guard++;
@@ -246,10 +246,34 @@
   document.getElementById("count").textContent = "4,000";
 
   // ---- endless feed ----
+  // ---- generate a distinct logo mark for every brand (so nothing looks bare) ----
+  var PAL=["#e5484d","#0090ff","#12a594","#f76b15","#8e4ec6","#e93d82","#30a46c","#f5a623",
+    "#00a2c7","#5b5bd6","#dc3b5d","#0d74ce","#3e63dd","#d6409f","#e54d2e","#46a758","#ab6400",
+    "#5e5ce6","#0c8599","#c2410c"];
+  function h32(str){ var h=2166136261>>>0; for(var i=0;i<str.length;i++){ h^=str.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; }
+  function genLogo(name){
+    var h=h32(name), c1=PAL[h%PAL.length], c2=PAL[(h>>4)%PAL.length];
+    if(c2===c1) c2=PAL[(h>>9)%PAL.length];
+    var I=(name.replace(/[^A-Za-z]/g,"")[0]||"S").toUpperCase(), o='<svg viewBox="0 0 44 44">';
+    switch(h%10){
+      case 0: o+='<circle cx="22" cy="22" r="19" fill="'+c1+'"/><text x="22" y="29" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="20" fill="#fff">'+I+'</text>'; break;
+      case 1: o+='<rect width="44" height="44" fill="'+c1+'"/><text x="22" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="#fff">'+I+'</text>'; break;
+      case 2: o+='<circle cx="22" cy="22" r="16" fill="none" stroke="'+c1+'" stroke-width="6"/>'; break;
+      case 3: o+='<path d="M22 6 L38 37 H6 Z" fill="'+c1+'"/>'; break;
+      case 4: o+='<circle cx="17" cy="22" r="12" fill="'+c1+'" opacity="0.85"/><circle cx="28" cy="22" r="12" fill="'+c2+'" opacity="0.85"/>'; break;
+      case 5: o+='<rect width="44" height="44" fill="'+c1+'"/><path d="M0 44 L44 0 L44 44 Z" fill="'+c2+'"/>'; break;
+      case 6: o+='<rect width="44" height="44" fill="'+c1+'"/><circle cx="22" cy="22" r="13" fill="#fff"/><circle cx="22" cy="22" r="6" fill="'+c1+'"/>'; break;
+      case 7: o+='<path d="M4 34 L15 16 L23 27 L30 13 L40 34 Z" fill="'+c1+'"/>'; break;
+      case 8: o+='<path d="M7 30 Q22 4 37 30" fill="none" stroke="'+c1+'" stroke-width="6" stroke-linecap="round"/>'; break;
+      default: o+='<g fill="'+c1+'"><circle cx="15" cy="15" r="6"/><circle cx="29" cy="29" r="6"/></g><g fill="'+c2+'"><circle cx="29" cy="15" r="6"/><circle cx="15" cy="29" r="6"/></g>';
+    }
+    return o+"</svg>";
+  }
+
   var feed=document.getElementById("feed"), pidx=0;
   function rowHTML(n){
     return '<div class="row" data-n="'+n.toLowerCase()+'">'
-      +'<div class="mono" style="background:'+colorFor(n)+'">'+initial(n)+'</div>'
+      +'<div class="tile">'+genLogo(n)+'</div>'
       +'<div class="meta"><div class="name">'+n+'</div><div class="cat">'+catFor(n)+'</div></div>'
       +'<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>'
       +'</div>';
@@ -320,6 +344,10 @@
     if(window.scrollY+window.innerHeight > document.documentElement.scrollHeight-1600) appendBatch(30);
     armStop();
   },{passive:true});
+  // any real user input cancels an in-progress settle so scrolling always responds
+  ["touchstart","wheel","pointerdown"].forEach(function(ev){
+    window.addEventListener(ev,function(){ if(gliding){ gliding=false; clearTimeout(glideT); } },{passive:true});
+  });
 
   // ---- search filters the loaded rows (the ten are unaffected) ----
   var q=document.getElementById("q"), t;
