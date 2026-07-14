@@ -1,0 +1,292 @@
+<!doctype html>
+<!--
+  PERFORMANCE PROP — NOT AFFILIATED WITH, ENDORSED BY, OR PRODUCED BY STAGWELL INC.
+  This is a fictional prop page built for a mentalism (magic) routine. The brand
+  directory is procedurally generated filler; the scroll always terminates on the
+  ten "Flagship Partners" used by the trick. Do not host or present this as a
+  genuine Stagwell website.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#0a0a0f">
+<title>Stagwell — Our Brands</title>
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#111119; --card:#15151f; --card2:#1b1b27;
+    --ink:#f4f4f7; --muted:#8a8a9a; --line:rgba(255,255,255,.07);
+    --accent:#ff5a3c; --accent2:#7b5cff;
+    --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-snap-type:y proximity}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:520px;margin:0 auto;min-height:100dvh}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:20;
+    padding:calc(var(--safe-t) + 14px) 20px 14px;
+    background:rgba(10,10,15,.82);backdrop-filter:saturate(160%) blur(14px);
+    border-bottom:1px solid var(--line);
+    transition:opacity .35s ease,transform .35s ease;
+  }
+  header.gone,.searchwrap.gone{opacity:0;transform:translateY(-100%);pointer-events:none}
+  .brandbar{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+  .navpill{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 11px;border-radius:999px}
+
+  /* Hero */
+  .hero{padding:26px 20px 18px}
+  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .hero h1{margin:10px 0 8px;font-size:34px;line-height:1.02;letter-spacing:-.035em;font-weight:800}
+  .hero p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+  .stats{display:flex;gap:10px;margin-top:18px}
+  .stat{flex:1;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:16px;padding:14px}
+  .stat b{display:block;font-size:22px;letter-spacing:-.02em}
+  .stat span{font-size:11.5px;color:var(--muted)}
+
+  /* Search */
+  .searchwrap{position:sticky;top:calc(var(--safe-t) + 58px);z-index:15;padding:12px 20px;background:linear-gradient(var(--bg),rgba(10,10,15,.6) 70%,transparent);transition:opacity .35s ease,transform .35s ease}
+  .search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .search svg{flex:none;opacity:.5}
+  .search input{border:0;background:transparent;color:var(--ink);font-size:15px;width:100%;outline:none}
+  .search input::placeholder{color:var(--muted)}
+
+  .sectionlabel{padding:6px 20px 10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+  /* Feed */
+  .feed{padding:0 12px}
+  .row{
+    display:flex;align-items:center;gap:14px;padding:12px 10px;border-radius:14px;
+    content-visibility:auto;contain-intrinsic-size:auto 64px;
+  }
+  .row:active{background:var(--card)}
+  .mono{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff;letter-spacing:-.02em}
+  .meta{min-width:0}
+  .name{font-size:15.5px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cat{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .chev{margin-left:auto;color:var(--muted);opacity:.5;flex:none}
+  .hidden{display:none}
+
+  .noresult{padding:40px 20px;text-align:center;color:var(--muted);display:none}
+
+  /* Flagship finale — the scroll always ENDS here, showing all ten */
+  .finale{
+    scroll-snap-align:end;min-height:100dvh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:22px 18px calc(20px + var(--safe-b));
+    background:
+      radial-gradient(120% 80% at 50% 0%,rgba(123,92,255,.16),transparent 60%),
+      radial-gradient(120% 80% at 50% 100%,rgba(255,90,60,.14),transparent 60%),
+      var(--bg);
+    border-top:1px solid var(--line);
+  }
+  .finale .cap{text-align:center;margin-bottom:14px}
+  .finale .cap .kicker{color:var(--accent2)}
+  .finale h2{margin:8px 0 4px;font-size:23px;letter-spacing:-.03em;font-weight:800}
+  .finale .cap p{margin:0;color:var(--muted);font-size:13px}
+  .flags{display:flex;flex-direction:column;gap:7px}
+  .flag{
+    display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:13px;
+    background:linear-gradient(150deg,var(--card2),var(--card));border:1px solid var(--line);
+  }
+  .flag .mono{width:38px;height:38px;border-radius:11px;font-size:16px}
+  .flag .name{font-size:15px;font-weight:700;white-space:normal;line-height:1.15}
+  .flag .cat{font-size:11.5px;margin-top:1px}
+  .flag .num{margin-left:auto;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .finalefoot{margin-top:16px;text-align:center;color:var(--muted);font-size:11px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brandbar">
+      <div class="logo"><span class="dot"></span>STAGWELL</div>
+      <div class="navpill">Our Network</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">The Brand Directory</div>
+    <h1>4,000 brands.<br>One network.</h1>
+    <p>Every partner across Stagwell's agencies, platforms, and studios — in one place.</p>
+    <div class="stats">
+      <div class="stat"><b id="count">4,000</b><span>Active brands</span></div>
+      <div class="stat"><b>70+</b><span>Agencies</span></div>
+      <div class="stat"><b>34</b><span>Countries</span></div>
+    </div>
+  </section>
+
+  <div class="searchwrap">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" type="text" inputmode="search" placeholder="Search 4,000 brands…" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="sectionlabel">All partners · A–Z</div>
+  <div class="feed" id="feed"></div>
+  <div class="noresult" id="noresult">No brands match that search.</div>
+
+  <section class="finale" id="finale">
+    <div class="cap">
+      <div class="kicker">The shortlist</div>
+      <h2>Flagship Partners</h2>
+      <p>Ten brands at the heart of everything we do.</p>
+    </div>
+    <div class="flags" id="flags"></div>
+    <div class="finalefoot">Stagwell — The Brand Directory · You've reached the end of all 4,000 partners</div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- deterministic PRNG so the directory looks the same every performance ----
+  var seed = 20260714 >>> 0;
+  function rnd(){ seed=(seed*1664525+1013904223)>>>0; return seed/4294967296; }
+  function pick(a){ return a[Math.floor(rnd()*a.length)]; }
+
+  var CATS = ["Automotive","Consumer Goods","Technology","Financial Services","Travel & Aviation",
+    "Media & Entertainment","Retail","Food & Beverage","Healthcare","Sports","Telecom","Energy",
+    "Fashion & Beauty","Hospitality","Gaming","Real Estate","Education","Logistics"];
+  var COLORS = ["#ff5a3c","#7b5cff","#2ec4b6","#ff8a3d","#4d7cff","#e04ea8","#39b54a","#f5b301",
+    "#00b3c7","#8b5cf6","#ef476f","#118ab2","#06d6a0","#f78c6b","#c44dff"];
+
+  // real, recognizable brands for believable filler (trick brands deliberately excluded)
+  var REAL = ["Nike","Adidas","Samsung","Microsoft","Amazon","Google","Netflix","Spotify","Airbnb",
+    "Uber","Lyft","Robinhood","TikTok","Meta","Reddit","Snapchat","Pinterest","LinkedIn","Slack",
+    "Zoom","Dropbox","Adobe","Salesforce","Oracle","IBM","Intel","Nvidia","Qualcomm","Cisco","Dell",
+    "HP","Lenovo","Sony","Panasonic","LG","Philips","Bose","Sonos","GoPro","Fitbit","Garmin","Peloton",
+    "Toyota","Honda","Ford","BMW","Audi","Volkswagen","Hyundai","Kia","Mazda","Subaru","Volvo","Porsche",
+    "Ferrari","Lamborghini","Tesla","Rivian","Lucid","Cadillac","Jeep","Chrysler","Dodge","Ram","Fiat",
+    "Peugeot","Renault","Nissan","Chevrolet","Buick","GMC","Lincoln","Bentley","Bugatti","McLaren",
+    "Bayer","Pfizer","Merck","Novartis","Moderna","Roche","Sanofi","Abbott","Medtronic","GSK",
+    "Visa","Mastercard","PayPal","Stripe","Chase","Citi","Wells Fargo","Goldman Sachs","Fidelity",
+    "Vanguard","Schwab","Capital One","Discover","Klarna","Affirm","SoFi","Coinbase","Nasdaq",
+    "Marriott","Hilton","Hyatt","IHG","Wyndham","Accor","Ritz-Carlton","Four Seasons","Airbus","Boeing",
+    "Emirates","Qatar Airways","Lufthansa","KLM","Southwest","JetBlue","Alaska Airlines","Ryanair",
+    "Coca-Cola","Sprite","Fanta","Dr Pepper","Gatorade","Red Bull","Monster","Nestle","Kraft","Heinz",
+    "Kellogg's","Mondelez","Mars","Hershey","Cadbury","Danone","Unilever","Colgate","Dove","Nivea",
+    "L'Oreal","Estee Lauder","Sephora","Ulta","MAC","Maybelline","CoverGirl","Olay","Gillette","Old Spice",
+    "Walmart","Costco","Kroger","Best Buy","IKEA","Home Depot","Lowe's","Wayfair","Etsy","eBay","Shopify",
+    "Zara","H&M","Uniqlo","Gap","Levi's","Ralph Lauren","Calvin Klein","Tommy Hilfiger","Under Armour",
+    "Puma","Reebok","New Balance","Converse","Vans","Crocs","Timberland","The North Face","Patagonia",
+    "Columbia","Lululemon","Gymshark","Yeti","Stanley","Hydro Flask","CamelBak","Coleman","REI",
+    "McDonald's","Burger King","Wendy's","Taco Bell","KFC","Subway","Chipotle","Domino's","Papa John's",
+    "Dunkin'","Krispy Kreme","Panera","Chick-fil-A","Popeyes","Sonic","Arby's","Dairy Queen","In-N-Out",
+    "Disney","Warner Bros","Universal","Paramount","HBO","Hulu","Peacock","Max","Roku","Twitch","Vimeo",
+    "EA","Ubisoft","Activision","Rockstar","Epic Games","Riot Games","Nintendo","Sega","Xbox","PlayStation",
+    "Verizon","AT&T","T-Mobile","Vodafone","Comcast","Orange","Telefonica","Ericsson","Nokia","Motorola",
+    "Shell","BP","Chevron","ExxonMobil","TotalEnergies","Siemens","GE","Honeywell","Bosch","Caterpillar",
+    "3M","DuPont","Dow","Land O'Lakes","Perdue","McCormick","Tyson","Conagra","Campbell's","General Electric",
+    "FedEx","UPS","DHL","Maersk","Instacart","DoorDash","Grubhub","Deliveroo","Zillow","Redfin","WeWork"];
+
+  var PRE = ["Nova","Vertex","Lumen","Apex","Orbit","Pulse","Ember","Terra","Astra","Vivid","Quanta",
+    "Zephyr","Halcyon","Cobalt","Onyx","Solace","Nimbus","Cirrus","Flux","Vector","Loom","Sable","Cedar",
+    "Atlas","Meridian","Beacon","Cipher","Delphi","Fathom","Gale","Harbor","Ionic","Juno","Kestrel",
+    "Lyric","Monarch","Nectar","Opal","Prism","Quill","Rune","Summit","Tidal","Umbra","Verve","Willow",
+    "Xenon","Yonder","Zenith","Aria","Boreal","Crest","Dune","Echo","Fern","Grove","Helix","Indigo",
+    "Jasper","Krypton","Lattice","Mosaic","Nova","Oaken","Polar","Quartz","Ridge","Slate","Thorn",
+    "Ultra","Vantage","Wren","Aurora","Basalt","Cove","Drift","Ellis","Forge","Glint","Haven","Isle",
+    "Kite","Larch","Marlow","Nash","Ocean","Pike","Quest","Reef","Sterling","Talon","Ansel","Brixton",
+    "Calder","Denali","Everest","Flint","Granite","Hollis","Ivory","Juniper","Keystone","Lark","Merit"];
+  var SUF = ["Labs","Group","Co","Digital","Works","Studio","Media","Collective","Partners","Ventures",
+    "Global","Dynamics","Systems","Foundry","Brands","Industries","Network","Interactive","Analytics",
+    "Commerce","Health","Financial","Motors","Foods","Apparel","Beverages","Technologies","Robotics",
+    "Aero","Energy","Capital","Retail","Sports","Games","Studios","Logistics","Devices","Wireless",
+    "Nutrition","Cosmetics","Outfitters","Supply","& Sons","Holdings","Group Inc.","Bio"];
+
+  // Trick brands — the scroll always ends on these ten. (order = trick order)
+  var FLAGSHIP = ["PepsiCo","Starbucks","Target","Apple","The Coca-Cola Company",
+    "National Football League","Stellantis","General Mills","Delta Air Lines","United Airlines"];
+  var FLAGCAT = {
+    "PepsiCo":"Food & Beverage","Starbucks":"Food & Beverage","Target":"Retail",
+    "Apple":"Technology","The Coca-Cola Company":"Food & Beverage",
+    "National Football League":"Sports","Stellantis":"Automotive",
+    "General Mills":"Consumer Goods","Delta Air Lines":"Travel & Aviation",
+    "United Airlines":"Travel & Aviation"};
+
+  function initial(name){ var m=name.replace(/[^A-Za-z]/g,""); return (m[0]||"S").toUpperCase(); }
+  function catFor(name){ var h=0; for(var i=0;i<name.length;i++) h=(h*31+name.charCodeAt(i))>>>0; return CATS[h%CATS.length]; }
+  function colorFor(name){ var h=0; for(var i=0;i<name.length;i++) h=(h*17+name.charCodeAt(i))>>>0; return COLORS[h%COLORS.length]; }
+
+  // ---- build ~4000 unique filler brands ----
+  var seen={}, list=[];
+  FLAGSHIP.forEach(function(f){ seen[f.toLowerCase()]=1; });
+  REAL.forEach(function(b){ var k=b.toLowerCase(); if(!seen[k]){ seen[k]=1; list.push(b); } });
+  var guard=0;
+  while(list.length<3990 && guard<60000){
+    guard++;
+    var name = rnd()<0.5 ? (pick(PRE)+" "+pick(SUF)) : (pick(PRE)+pick(["","","","x","io","ly","co"])+" "+pick(SUF));
+    var k=name.toLowerCase();
+    if(!seen[k]){ seen[k]=1; list.push(name); }
+  }
+  list.sort(function(a,b){ return a.replace(/^The /,"").localeCompare(b.replace(/^The /,"")); });
+
+  document.getElementById("count").textContent = (list.length+FLAGSHIP.length).toLocaleString();
+
+  // ---- render feed (fast: build one HTML string) ----
+  var feed=document.getElementById("feed");
+  var html="";
+  for(var i=0;i<list.length;i++){
+    var n=list[i];
+    html+='<div class="row" data-n="'+n.toLowerCase()+'">'
+      +'<div class="mono" style="background:'+colorFor(n)+'">'+initial(n)+'</div>'
+      +'<div class="meta"><div class="name">'+n+'</div><div class="cat">'+catFor(n)+'</div></div>'
+      +'<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>'
+      +'</div>';
+  }
+  feed.innerHTML=html;
+
+  // ---- flagship finale ----
+  var flags=document.getElementById("flags"), fh="";
+  for(var j=0;j<FLAGSHIP.length;j++){
+    var fn=FLAGSHIP[j];
+    fh+='<div class="flag">'
+      +'<div class="mono" style="background:'+colorFor(fn)+'">'+initial(fn)+'</div>'
+      +'<div class="meta"><div class="name">'+fn+'</div><div class="cat">'+(FLAGCAT[fn]||catFor(fn))+'</div></div>'
+      +'<div class="num">'+String(j+1).padStart(2,"0")+'</div>'
+      +'</div>';
+  }
+  flags.innerHTML=fh;
+
+  // ---- search (filters the A–Z filler only; finale stays pinned at the end) ----
+  var q=document.getElementById("q"), rows=feed.getElementsByClassName("row"), noresult=document.getElementById("noresult"), t;
+  q.addEventListener("input",function(){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      var v=q.value.trim().toLowerCase(), shown=0;
+      for(var i=0;i<rows.length;i++){
+        var match = !v || rows[i].getAttribute("data-n").indexOf(v)>-1;
+        rows[i].classList.toggle("hidden",!match);
+        if(match) shown++;
+      }
+      noresult.style.display = (v && shown===0) ? "block" : "none";
+    },90);
+  });
+
+  // ---- clean ending: hide the sticky chrome once the finale is in view ----
+  var hdr=document.querySelector("header"), sw=document.querySelector(".searchwrap");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var hide=e.isIntersecting;
+        hdr.classList.toggle("gone",hide);
+        sw.classList.toggle("gone",hide);
+      });
+    },{threshold:0.4});
+    io.observe(document.getElementById("finale"));
+  }
+})();
+</script>
+</body>
+</html>

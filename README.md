@@ -14,6 +14,15 @@ network agencies), and the AI "reads their mind."
 - **`tools/generate_anagram.py`** — the search that produced the routine. It
   finds a valid **progressive anagram** over a pool of confirmed Stagwell brands
   and verifies the result.
+- **`prop/stagwell-brands.html`** — a mobile-first "force" prop: a Stagwell-styled
+  brand directory that lists 4,000 partners, but every scroll ends on the same
+  ten "Flagship Partners" (the trick brands). Hand the participant the phone,
+  let them scroll the endless-feeling list, and when they reach the end they can
+  only choose from the ten. Open the file in a phone browser.
+
+  > **Note:** the prop is a self-contained performance aid built for this routine.
+  > It is not affiliated with, endorsed by, or produced by Stagwell Inc., and
+  > should be used as a magic prop — not hosted or presented as a real website.
 
 ## How the trick works (method)
 
