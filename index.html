@@ -1,106 +1,104 @@
 <!doctype html>
 <!--
-  PERFORMANCE PROP — NOT AFFILIATED WITH, ENDORSED BY, OR PRODUCED BY STAGWELL INC.
-  This is a fictional prop page built for a mentalism (magic) routine. The brand
-  directory is procedurally generated filler; the scroll always terminates on the
-  ten "Flagship Partners" used by the trick. Do not host or present this as a
-  genuine Stagwell website.
+  STAGWELL — BRAND DIRECTORY (event prop)
+  Internal performance aid for a live mentalism routine at a Stagwell event.
+  The A-Z directory is procedurally generated filler; the scroll always
+  terminates on the ten "Flagship Partners" used by the trick, in trick order.
+  Flagship logos are lightweight inline-SVG recreations in brand colors so the
+  page works fully offline (no venue-wifi dependency). Swap in official brand
+  assets by replacing the entries in the LOGOS map below.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<meta name="theme-color" content="#0a0a0f">
+<meta name="theme-color" content="#003349">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Stagwell Brands">
 <title>Stagwell — Our Brands</title>
 <style>
   :root{
-    --bg:#0a0a0f; --bg2:#111119; --card:#15151f; --card2:#1b1b27;
-    --ink:#f4f4f7; --muted:#8a8a9a; --line:rgba(255,255,255,.07);
-    --accent:#ff5a3c; --accent2:#7b5cff;
+    --navy:#003349; --bg:#022630; --bg2:#04303f; --card:#0a3a4d; --card2:#0e4459;
+    --ink:#eef6f8; --muted:#83a7b3; --line:rgba(255,255,255,.09);
+    --gold:#FFB81C; --gold-dim:#c9922a;
     --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html{scroll-snap-type:y proximity}
   body{
-    margin:0;background:var(--bg);color:var(--ink);
+    margin:0;background:linear-gradient(180deg,#022630,#003349 60%,#022a36);
+    background-attachment:fixed;color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   .wrap{max-width:520px;margin:0 auto;min-height:100dvh}
 
-  /* Header */
   header{
     position:sticky;top:0;z-index:20;
-    padding:calc(var(--safe-t) + 14px) 20px 14px;
-    background:rgba(10,10,15,.82);backdrop-filter:saturate(160%) blur(14px);
+    padding:calc(var(--safe-t) + 15px) 20px 15px;
+    background:rgba(2,38,48,.85);backdrop-filter:saturate(160%) blur(14px);
     border-bottom:1px solid var(--line);
     transition:opacity .35s ease,transform .35s ease;
   }
   header.gone,.searchwrap.gone{opacity:0;transform:translateY(-100%);pointer-events:none}
   .brandbar{display:flex;align-items:center;justify-content:space-between}
-  .logo{font-weight:800;font-size:22px;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
-  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
-  .navpill{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 11px;border-radius:999px}
+  .logo{font-weight:800;font-size:21px;letter-spacing:.02em;display:flex;align-items:center;gap:9px}
+  .logo .tick{width:7px;height:20px;background:var(--gold);border-radius:1px;box-shadow:0 0 10px rgba(255,184,28,.5)}
+  .navpill{font-size:12px;color:var(--gold);border:1px solid rgba(255,184,28,.35);padding:6px 12px;border-radius:999px;font-weight:600}
 
-  /* Hero */
   .hero{padding:26px 20px 18px}
-  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
-  .hero h1{margin:10px 0 8px;font-size:34px;line-height:1.02;letter-spacing:-.035em;font-weight:800}
+  .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .hero h1{margin:12px 0 10px;font-size:34px;line-height:1.02;letter-spacing:-.035em;font-weight:800}
+  .hero h1 em{font-style:normal;color:var(--gold)}
   .hero p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
-  .stats{display:flex;gap:10px;margin-top:18px}
+  .stats{display:flex;gap:10px;margin-top:20px}
   .stat{flex:1;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:16px;padding:14px}
-  .stat b{display:block;font-size:22px;letter-spacing:-.02em}
+  .stat b{display:block;font-size:22px;letter-spacing:-.02em;color:#fff}
+  .stat b i{font-style:normal;color:var(--gold)}
   .stat span{font-size:11.5px;color:var(--muted)}
 
-  /* Search */
-  .searchwrap{position:sticky;top:calc(var(--safe-t) + 58px);z-index:15;padding:12px 20px;background:linear-gradient(var(--bg),rgba(10,10,15,.6) 70%,transparent);transition:opacity .35s ease,transform .35s ease}
+  .searchwrap{position:sticky;top:calc(var(--safe-t) + 60px);z-index:15;padding:12px 20px;background:linear-gradient(#022630,rgba(2,38,48,.6) 70%,transparent);transition:opacity .35s ease,transform .35s ease}
   .search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-  .search svg{flex:none;opacity:.5}
+  .search svg{flex:none;opacity:.55}
   .search input{border:0;background:transparent;color:var(--ink);font-size:15px;width:100%;outline:none}
   .search input::placeholder{color:var(--muted)}
 
   .sectionlabel{padding:6px 20px 10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
 
-  /* Feed */
   .feed{padding:0 12px}
-  .row{
-    display:flex;align-items:center;gap:14px;padding:12px 10px;border-radius:14px;
-    content-visibility:auto;contain-intrinsic-size:auto 64px;
-  }
+  .row{display:flex;align-items:center;gap:14px;padding:12px 10px;border-radius:14px;content-visibility:auto;contain-intrinsic-size:auto 64px}
   .row:active{background:var(--card)}
   .mono{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff;letter-spacing:-.02em}
   .meta{min-width:0}
   .name{font-size:15.5px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .cat{font-size:12.5px;color:var(--muted);margin-top:2px}
-  .chev{margin-left:auto;color:var(--muted);opacity:.5;flex:none}
+  .chev{margin-left:auto;color:var(--muted);opacity:.45;flex:none}
   .hidden{display:none}
-
   .noresult{padding:40px 20px;text-align:center;color:var(--muted);display:none}
 
-  /* Flagship finale — the scroll always ENDS here, showing all ten */
+  /* logo tile */
+  .tile{flex:none;width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+  .tile svg{width:100%;height:100%;display:block}
+
+  /* Flagship finale — the scroll ALWAYS ends here, showing all ten */
   .finale{
-    scroll-snap-align:end;min-height:100dvh;
-    display:flex;flex-direction:column;justify-content:center;
+    scroll-snap-align:end;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
     padding:22px 18px calc(20px + var(--safe-b));
     background:
-      radial-gradient(120% 80% at 50% 0%,rgba(123,92,255,.16),transparent 60%),
-      radial-gradient(120% 80% at 50% 100%,rgba(255,90,60,.14),transparent 60%),
-      var(--bg);
+      radial-gradient(120% 70% at 50% 0%,rgba(255,184,28,.14),transparent 60%),
+      radial-gradient(120% 70% at 50% 100%,rgba(0,90,120,.35),transparent 60%);
     border-top:1px solid var(--line);
   }
   .finale .cap{text-align:center;margin-bottom:14px}
-  .finale .cap .kicker{color:var(--accent2)}
-  .finale h2{margin:8px 0 4px;font-size:23px;letter-spacing:-.03em;font-weight:800}
+  .finale h2{margin:8px 0 4px;font-size:24px;letter-spacing:-.03em;font-weight:800}
   .finale .cap p{margin:0;color:var(--muted);font-size:13px}
   .flags{display:flex;flex-direction:column;gap:7px}
-  .flag{
-    display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:13px;
-    background:linear-gradient(150deg,var(--card2),var(--card));border:1px solid var(--line);
-  }
-  .flag .mono{width:38px;height:38px;border-radius:11px;font-size:16px}
+  .flag{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:14px;background:linear-gradient(150deg,var(--card2),var(--card));border:1px solid var(--line)}
+  .flag .tile{width:46px;height:46px;border-radius:12px}
   .flag .name{font-size:15px;font-weight:700;white-space:normal;line-height:1.15}
   .flag .cat{font-size:11.5px;margin-top:1px}
-  .flag .num{margin-left:auto;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .flag .num{margin-left:auto;font-size:12px;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums}
   .finalefoot{margin-top:16px;text-align:center;color:var(--muted);font-size:11px;line-height:1.6}
 </style>
 </head>
@@ -108,18 +106,18 @@
 <div class="wrap">
   <header>
     <div class="brandbar">
-      <div class="logo"><span class="dot"></span>STAGWELL</div>
+      <div class="logo"><span class="tick"></span>STAGWELL</div>
       <div class="navpill">Our Network</div>
     </div>
   </header>
 
   <section class="hero">
     <div class="kicker">The Brand Directory</div>
-    <h1>4,000 brands.<br>One network.</h1>
+    <h1>4,000 brands.<br><em>One network.</em></h1>
     <p>Every partner across Stagwell's agencies, platforms, and studios — in one place.</p>
     <div class="stats">
       <div class="stat"><b id="count">4,000</b><span>Active brands</span></div>
-      <div class="stat"><b>70+</b><span>Agencies</span></div>
+      <div class="stat"><b>70<i>+</i></b><span>Agencies</span></div>
       <div class="stat"><b>34</b><span>Countries</span></div>
     </div>
   </section>
@@ -137,7 +135,7 @@
 
   <section class="finale" id="finale">
     <div class="cap">
-      <div class="kicker">The shortlist</div>
+      <div class="kicker" style="color:var(--gold)">The shortlist</div>
       <h2>Flagship Partners</h2>
       <p>Ten brands at the heart of everything we do.</p>
     </div>
@@ -149,8 +147,6 @@
 <script>
 (function(){
   "use strict";
-
-  // ---- deterministic PRNG so the directory looks the same every performance ----
   var seed = 20260714 >>> 0;
   function rnd(){ seed=(seed*1664525+1013904223)>>>0; return seed/4294967296; }
   function pick(a){ return a[Math.floor(rnd()*a.length)]; }
@@ -161,7 +157,6 @@
   var COLORS = ["#ff5a3c","#7b5cff","#2ec4b6","#ff8a3d","#4d7cff","#e04ea8","#39b54a","#f5b301",
     "#00b3c7","#8b5cf6","#ef476f","#118ab2","#06d6a0","#f78c6b","#c44dff"];
 
-  // real, recognizable brands for believable filler (trick brands deliberately excluded)
   var REAL = ["Nike","Adidas","Samsung","Microsoft","Amazon","Google","Netflix","Spotify","Airbnb",
     "Uber","Lyft","Robinhood","TikTok","Meta","Reddit","Snapchat","Pinterest","LinkedIn","Slack",
     "Zoom","Dropbox","Adobe","Salesforce","Oracle","IBM","Intel","Nvidia","Qualcomm","Cisco","Dell",
@@ -195,7 +190,7 @@
     "Atlas","Meridian","Beacon","Cipher","Delphi","Fathom","Gale","Harbor","Ionic","Juno","Kestrel",
     "Lyric","Monarch","Nectar","Opal","Prism","Quill","Rune","Summit","Tidal","Umbra","Verve","Willow",
     "Xenon","Yonder","Zenith","Aria","Boreal","Crest","Dune","Echo","Fern","Grove","Helix","Indigo",
-    "Jasper","Krypton","Lattice","Mosaic","Nova","Oaken","Polar","Quartz","Ridge","Slate","Thorn",
+    "Jasper","Krypton","Lattice","Mosaic","Oaken","Polar","Quartz","Ridge","Slate","Thorn",
     "Ultra","Vantage","Wren","Aurora","Basalt","Cove","Drift","Ellis","Forge","Glint","Haven","Isle",
     "Kite","Larch","Marlow","Nash","Ocean","Pike","Quest","Reef","Sterling","Talon","Ansel","Brixton",
     "Calder","Denali","Everest","Flint","Granite","Hollis","Ivory","Juniper","Keystone","Lark","Merit"];
@@ -205,7 +200,7 @@
     "Aero","Energy","Capital","Retail","Sports","Games","Studios","Logistics","Devices","Wireless",
     "Nutrition","Cosmetics","Outfitters","Supply","& Sons","Holdings","Group Inc.","Bio"];
 
-  // Trick brands — the scroll always ends on these ten. (order = trick order)
+  // Trick brands — the scroll always ends on these ten, in trick order.
   var FLAGSHIP = ["PepsiCo","Starbucks","Target","Apple","The Coca-Cola Company",
     "National Football League","Stellantis","General Mills","Delta Air Lines","United Airlines"];
   var FLAGCAT = {
@@ -215,16 +210,29 @@
     "General Mills":"Consumer Goods","Delta Air Lines":"Travel & Aviation",
     "United Airlines":"Travel & Aviation"};
 
+  // Inline-SVG logo recreations (brand colors). Replace with official assets as desired.
+  var LOGOS = {
+    "PepsiCo":'<svg viewBox="0 0 44 44"><defs><clipPath id="pep"><circle cx="22" cy="22" r="20"/></clipPath></defs><g clip-path="url(#pep)"><rect width="44" height="44" fill="#fff"/><path d="M0 0 H44 V21 Q22 13 0 21 Z" fill="#e32934"/><path d="M0 44 H44 V23 Q22 31 0 23 Z" fill="#004b93"/></g><circle cx="22" cy="22" r="20" fill="none" stroke="#eee"/></svg>',
+    "Starbucks":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><circle cx="22" cy="22" r="19" fill="#006241"/><circle cx="22" cy="22" r="19" fill="none" stroke="#fff" stroke-width="2.4"/><circle cx="22" cy="22" r="13.5" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="22" cy="11.5" r="1.4" fill="#fff"/><circle cx="13.5" cy="15" r="1" fill="#fff"/><circle cx="30.5" cy="15" r="1" fill="#fff"/><path d="M22 15c-4.2 0-6.4 3.1-6.4 6.4 0 3.2 2.2 5.4 3.4 7.4-2.2-1-3.6-3.2-3.6-5.4M22 15c4.2 0 6.4 3.1 6.4 6.4 0 3.2-2.2 5.4-3.4 7.4 2.2-1 3.6-3.2 3.6-5.4" fill="none" stroke="#fff" stroke-width="1.2"/></svg>',
+    "Target":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><circle cx="22" cy="22" r="19" fill="#cc0000"/><circle cx="22" cy="22" r="12" fill="#fff"/><circle cx="22" cy="22" r="5.6" fill="#cc0000"/></svg>',
+    "Apple":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><g transform="translate(10 8) scale(1)" fill="#1d1d1f"><path d="M17.05 12.54c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.02-3.76-2.05-1.6-.16-3.12.94-3.93.94-.81 0-1.72-.92-2.83-.9-1.46.02-2.8.85-3.55 2.16-1.51 2.63-.39 6.53 1.09 8.67.72 1.05 1.58 2.22 2.71 2.18 1.09-.04 1.5-.7 2.82-.7 1.31 0 1.68.7 2.83.68 1.17-.02 1.91-1.07 2.63-2.12.82-1.22 1.16-2.4 1.18-2.46-.03-.01-2.26-.87-2.28-3.44"/><path d="M14.53 4.85c.6-.73 1.01-1.74.9-2.75-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.68-.92 2.67.97.08 1.96-.5 2.56-1.23z"/></g></svg>',
+    "The Coca-Cola Company":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#f40009"/><path d="M5 27q10-7 18-3 8 4 16-2-2 3-5 4.5-6.5 3.5-13 .6-6-2.6-12 3.2-2-.7-4-.9z" fill="#fff" opacity=".92"/><text x="22" y="17" text-anchor="middle" font-family="Snell Roundhand,Brush Script MT,cursive" font-style="italic" font-weight="700" font-size="10" fill="#fff">Coca-Cola</text></svg>',
+    "National Football League":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><path d="M22 3l15 4v13c0 10.5-6.8 16.5-15 20-8.2-3.5-15-9.5-15-20V7z" fill="#013369"/><path d="M22 3l15 4v4.5H7V7z" fill="#013369"/><g fill="#fff"><circle cx="12" cy="8.4" r=".8"/><circle cx="16.5" cy="7.4" r=".8"/><circle cx="22" cy="7.1" r=".8"/><circle cx="27.5" cy="7.4" r=".8"/><circle cx="32" cy="8.4" r=".8"/></g><text x="22" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-style="italic" font-weight="800" font-size="12.5" fill="#fff">NFL</text></svg>',
+    "Stellantis":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><g stroke="#0b2a3d" stroke-width="1.1" stroke-linecap="round"><line x1="9" y1="18" x2="9" y2="22"/><line x1="15.5" y1="16" x2="15.5" y2="21"/><line x1="22" y1="15" x2="22" y2="20"/><line x1="28.5" y1="16" x2="28.5" y2="21"/><line x1="35" y1="18" x2="35" y2="22"/></g><text x="22" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="6.4" letter-spacing=".6" fill="#0b2a3d">STELLANTIS</text></svg>',
+    "General Mills":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><rect x="4" y="4" width="36" height="36" rx="10" fill="#0a4595"/><text x="22" y="33" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="29" fill="#fff">G</text></svg>',
+    "Delta Air Lines":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><path d="M22 9l15 25H22z" fill="#98002e"/><path d="M22 9L7 34h15z" fill="#e01933"/></svg>',
+    "United Airlines":'<svg viewBox="0 0 44 44"><rect width="44" height="44" fill="#fff"/><circle cx="22" cy="22" r="18.5" fill="#0033a0"/><g fill="none" stroke="#fff" stroke-width="1.1"><ellipse cx="22" cy="22" rx="7.5" ry="18.5"/><ellipse cx="22" cy="22" rx="14.5" ry="18.5"/><line x1="3.5" y1="22" x2="40.5" y2="22"/><path d="M7 13H37"/><path d="M7 31H37"/></g></svg>'
+  };
+
   function initial(name){ var m=name.replace(/[^A-Za-z]/g,""); return (m[0]||"S").toUpperCase(); }
   function catFor(name){ var h=0; for(var i=0;i<name.length;i++) h=(h*31+name.charCodeAt(i))>>>0; return CATS[h%CATS.length]; }
   function colorFor(name){ var h=0; for(var i=0;i<name.length;i++) h=(h*17+name.charCodeAt(i))>>>0; return COLORS[h%COLORS.length]; }
 
-  // ---- build ~4000 unique filler brands ----
   var seen={}, list=[];
   FLAGSHIP.forEach(function(f){ seen[f.toLowerCase()]=1; });
   REAL.forEach(function(b){ var k=b.toLowerCase(); if(!seen[k]){ seen[k]=1; list.push(b); } });
   var guard=0;
-  while(list.length<3990 && guard<60000){
+  while(list.length<3990 && guard<80000){
     guard++;
     var name = rnd()<0.5 ? (pick(PRE)+" "+pick(SUF)) : (pick(PRE)+pick(["","","","x","io","ly","co"])+" "+pick(SUF));
     var k=name.toLowerCase();
@@ -234,9 +242,7 @@
 
   document.getElementById("count").textContent = (list.length+FLAGSHIP.length).toLocaleString();
 
-  // ---- render feed (fast: build one HTML string) ----
-  var feed=document.getElementById("feed");
-  var html="";
+  var feed=document.getElementById("feed"), html="";
   for(var i=0;i<list.length;i++){
     var n=list[i];
     html+='<div class="row" data-n="'+n.toLowerCase()+'">'
@@ -247,19 +253,17 @@
   }
   feed.innerHTML=html;
 
-  // ---- flagship finale ----
   var flags=document.getElementById("flags"), fh="";
   for(var j=0;j<FLAGSHIP.length;j++){
     var fn=FLAGSHIP[j];
     fh+='<div class="flag">'
-      +'<div class="mono" style="background:'+colorFor(fn)+'">'+initial(fn)+'</div>'
+      +'<div class="tile">'+LOGOS[fn]+'</div>'
       +'<div class="meta"><div class="name">'+fn+'</div><div class="cat">'+(FLAGCAT[fn]||catFor(fn))+'</div></div>'
       +'<div class="num">'+String(j+1).padStart(2,"0")+'</div>'
       +'</div>';
   }
   flags.innerHTML=fh;
 
-  // ---- search (filters the A–Z filler only; finale stays pinned at the end) ----
   var q=document.getElementById("q"), rows=feed.getElementsByClassName("row"), noresult=document.getElementById("noresult"), t;
   q.addEventListener("input",function(){
     clearTimeout(t);
@@ -274,17 +278,11 @@
     },90);
   });
 
-  // ---- clean ending: hide the sticky chrome once the finale is in view ----
   var hdr=document.querySelector("header"), sw=document.querySelector(".searchwrap");
   if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        var hide=e.isIntersecting;
-        hdr.classList.toggle("gone",hide);
-        sw.classList.toggle("gone",hide);
-      });
-    },{threshold:0.4});
-    io.observe(document.getElementById("finale"));
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ hdr.classList.toggle("gone",e.isIntersecting); sw.classList.toggle("gone",e.isIntersecting); });
+    },{threshold:0.4}).observe(document.getElementById("finale"));
   }
 })();
 </script>

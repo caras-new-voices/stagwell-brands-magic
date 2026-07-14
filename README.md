@@ -14,15 +14,35 @@ network agencies), and the AI "reads their mind."
 - **`tools/generate_anagram.py`** — the search that produced the routine. It
   finds a valid **progressive anagram** over a pool of confirmed Stagwell brands
   and verifies the result.
-- **`prop/stagwell-brands.html`** — a mobile-first "force" prop: a Stagwell-styled
-  brand directory that lists 4,000 partners, but every scroll ends on the same
-  ten "Flagship Partners" (the trick brands). Hand the participant the phone,
-  let them scroll the endless-feeling list, and when they reach the end they can
-  only choose from the ten. Open the file in a phone browser.
+- **`index.html`** — a mobile-first "force" prop: a Stagwell-branded brand
+  directory (Prussian-blue + gold palette) that lists 4,000 partners, but every
+  scroll ends on the same ten "Flagship Partners" (the trick brands), each shown
+  with its logo. Hand the participant the phone, let them scroll the
+  endless-feeling list, and when they reach the end they can only choose from the
+  ten. Fully self-contained (works offline — no venue wifi needed).
+- **`vercel.json`** — static-hosting config so the repo deploys to Vercel as-is.
 
-  > **Note:** the prop is a self-contained performance aid built for this routine.
-  > It is not affiliated with, endorsed by, or produced by Stagwell Inc., and
-  > should be used as a magic prop — not hosted or presented as a real website.
+  > Built as an internal performance aid for a Stagwell event. Flagship logos are
+  > lightweight inline-SVG recreations in brand colors; swap in official brand
+  > assets by editing the `LOGOS` map in `index.html`.
+
+## Deploying to Vercel
+
+The site is a single static `index.html`, so no build step is needed.
+
+**Option A — Vercel dashboard (no CLI):**
+1. Go to vercel.com → **Add New… → Project → Import Git Repository**.
+2. Select `caras-new-voices/stagwell-brands-magic`.
+3. Set the **Production Branch** to `claude/stagwell-brands-magic-trick-x2gz4u`
+   (or merge it into `main` first).
+4. **Framework Preset: Other**, leave build/output empty → **Deploy**.
+
+**Option B — Vercel CLI (from your machine):**
+```bash
+git clone <repo> && cd stagwell-brands-magic
+npx vercel        # preview deploy
+npx vercel --prod # production deploy
+```
 
 ## How the trick works (method)
 
