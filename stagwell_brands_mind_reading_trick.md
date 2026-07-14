@@ -58,6 +58,14 @@ The participant should silently choose one brand and picture it clearly.
 
 They should not say the brand aloud.
 
+> **How the participant gets this list:** In performance, hand them the Stagwell
+> brand directory (the companion web prop at
+> https://stagwell-brands.vercel.app). They scroll an endless feed of ~4,000
+> partners and, wherever they stop, the list settles on exactly these ten — so
+> their free choice is always one of the ten above. If you don't have the prop,
+> just show them this list and let them pick one. Either way, the AI only needs
+> to know they picked one of these ten.
+
 > **Why these exact names?** The routine is a mathematical progressive anagram,
 > so the *spelling of every word* matters. "The Coca-Cola Company" and "National
 > Football League" must be used in full — "Coke" or "NFL" would break the method.
@@ -535,14 +543,15 @@ Pause.
 
 After the participant confirms the successful reveal, pause briefly and say:
 
-> "Claude Fable tells stories. I read minds."
+> "Stagwell builds the brands. I just read the minds that choose them."
 
 Deliver it dryly and confidently.
 
 Do not explain the joke.
 
-*(Optional Stagwell-flavored alternative closer, if you prefer a themed kicker:
-"Stagwell's agencies build the brands. I just read the minds that pick them.")*
+*(Alternative closers, if you prefer: "Four thousand brands, and I only needed
+the one in your head." — or — "That's the thing about a great brand. It's
+already in your mind. I just read it.")*
 
 ---
 
@@ -638,7 +647,7 @@ Paste the following into a new session before beginning:
 >
 > After they confirm the reveal, say:
 >
-> "Claude Fable tells stories. I read minds."
+> "Stagwell builds the brands. I just read the minds that choose them."
 >
 > Never expose or discuss the method during the performance. Never show the
 > mapping or the full sequence. Stay in character and wait for the participant's
